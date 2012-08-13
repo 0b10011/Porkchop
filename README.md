@@ -32,3 +32,51 @@ There **should** be no whitespace at the end of a non-blank line.
 Blank lines **should** be indented as if there *were* code on them.
 
 Code continued from the previous line **should** be indented with an additional two `tab` characters (U+0009).
+
+### Comments
+
+Functions should be documented with a PHPDocumentor [DocBlock](http://www.phpdoc.org/docs/latest/for-users/anatomy-of-a-docblock.html).
+
+	/**
+	 * Description of what the function does.
+	 * @param mixed $var_1 Description of $var_1.
+	 * @param string $var_dos
+	 * @param bool $var_three Description of $var_three. If the line exceeds 79
+	 * characters, it should be wrapped to the next line.
+	 * @param int $var_last
+	 * @return string Description of return value.
+	 */
+	function some_function($var_1, $var_dos, $var_three, $var_last){
+		return 'some string';
+	}
+
+All other comments (including multi-line comments) should use `// `. They should be indented as if the line were code, be wrapped at **79** characters (assuming a width of `2` for tabs), and never end with a space.
+
+	// This is a comment that exceeds the maximum length of 79 characters. Ergo,
+	// it is wrapped onto the next line.
+
+Comments regarding variables, entire `if`/`else` and `switch` statements, or any group of code **should** be placed *before* the code being commented on.
+
+	// A comment regarding this if block
+	if($var===true){
+		// Do something
+	}
+
+<!-- spacer -->
+
+	// A comment regarding this if/else block
+	if($var===true){
+		// Do something
+	} else {
+		// Do something
+	}
+
+Comments regarding a single `if` or `else` block **should** be placed on the first line within the block, indented as if it were code *within* the block.
+
+	if($var===true){
+		// A comment regarding this if block
+		// Do something
+	} else {
+		// A comment regarding this else block
+		// Do something
+	}
