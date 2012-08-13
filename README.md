@@ -31,11 +31,11 @@ There **should** be no whitespace at the end of a non-blank line.
 
 Blank lines **should** be indented as if there *were* code on them.
 
-Code continued from the previous line **should** be indented with an additional two `tab` characters (U+0009).
+Code continued from the previous line **must** be indented with an additional two `tab` characters (U+0009).
 
 ### Comments
 
-Functions should be documented with a PHPDocumentor [DocBlock](http://www.phpdoc.org/docs/latest/for-users/anatomy-of-a-docblock.html).
+Functions **must** be documented with a PHPDocumentor [DocBlock](http://www.phpdoc.org/docs/latest/for-users/anatomy-of-a-docblock.html).
 
 	/**
 	 * Description of what the function does.
@@ -50,33 +50,89 @@ Functions should be documented with a PHPDocumentor [DocBlock](http://www.phpdoc
 		return 'some string';
 	}
 
-All other comments (including multi-line comments) should use `// `. They should be indented as if the line were code, be wrapped at **79** characters (assuming a width of `2` for tabs), and never end with a space.
+All other comments (including multi-line comments) **must** use `// `. They **must** be indented as if the line were code, be wrapped at **79** characters (assuming a width of `2` for tabs), and never end with a space.
 
 	// This is a comment that exceeds the maximum length of 79 characters. Ergo,
 	// it is wrapped onto the next line.
 
-Comments regarding variables, entire `if`/`else` and `switch` statements, or any group of code **should** be placed *before* the code being commented on.
+Comments regarding variables, entire `if`/`else` and `switch` statements, or any group of code **must** be placed *before* the code being commented on.
 
 	// A comment regarding this if block
-	if($var===true){
+	if ($var === true) {
 		// Do something
 	}
 
 <!-- spacer -->
 
 	// A comment regarding this if/else block
-	if($var===true){
+	if ($var === true) {
 		// Do something
 	} else {
 		// Do something
 	}
 
-Comments regarding a single `if` or `else` block **should** be placed on the first line within the block, indented as if it were code *within* the block.
+Comments regarding a single `if` or `else` block **must** be placed on the first line within the block, indented as if it were code *within* the block.
 
-	if($var===true){
+	if ($var === true) {
 		// A comment regarding this if block
 		// Do something
 	} else {
 		// A comment regarding this else block
 		// Do something
 	}
+
+### Control structures
+
+The opening curly bracket (`{`) **must not** be on its own line.
+
+	function some_function($var) {
+		if ($var === true) {
+
+The closing curly bracket (`}`) **must** be on its own line, indented the same as the opening bracket's line.
+
+	if ($var === true) {
+		// Do something
+	}
+
+A single space (` `) **must** be placed outside of parentheses groups and comparison operators for `if`, `elseif`, `switch`, `while`, and `do` statements.
+
+	if ($var === true) {
+		// Do something
+	} elseif($var === false) {
+		// Do something
+	}
+
+<!-- spacer -->
+
+	switch ($var) {
+
+<1-- spacer -->
+
+	while ($var === true) {
+
+<1-- spacer -->
+
+	do ($var === true) {
+
+If there is *more than one* argument for a function, each argument **must** be displayed on its own line, with the closing parenthesis (`)`) and opening curly bracket (`{`) together on their own line (no space between), indented the same as the opening parenthesis's (`(`) line.
+
+	function some_function($var1 = false){
+
+<!-- spacer -->
+
+	function some_function(
+		$var1,
+		$var2 = false,
+		$var3
+	){
+
+Values and key–value pairs for arrays and objects **must** be placed on their own line, with the closing parenthesis (`)`) and semicolon (`;`) together on their own line (no space between). Each value or key–value pair **must** be proceeded by a comma (`,`).
+
+	$var = array();
+
+<!-- spacer -->
+
+	$var = array(
+		'value1',
+		'key' => 'value',
+	);
