@@ -20,3 +20,15 @@ For example, [`imagecopyresampled()`](http://php.net/manual/en/function.imagecop
 First and foremost, the name of the original function **should** be included in the new name. For example, a replacement for `str_replace()` that has a `$limit` parameter **could** be named `str_replace_new()`. However, function names **should** be named in a descriptive manner, so someone who sees the function called has a pretty good idea of what it does. Ergo, a better name for a replacement for `str_replace()` that has a `$limit` parameter would be `str_replace_limit()`.
 
 When possible, a `low line` character (U+005F, also known as an "underscore") should be used to separate words in a function name. For example, instead of `addslashescustom()`, the function name should be `addslashes_custom()`. Note that the original name `addslashes` is used rather than `add_slashes`.
+
+## Coding guidelines
+
+### Whitespace
+
+Indentation **must** be done with a single `tab` character (U+0009).
+
+There **should** be no whitespace at the end of a non-blank line.
+
+Blank lines **should** be indented as if there *were* code on them.
+
+Code continued from the previous line **should** be indented with an additional two `tab` characters (U+0009).
