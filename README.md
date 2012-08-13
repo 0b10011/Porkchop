@@ -1,0 +1,1 @@
+Extending PHP string functions in PHP, one function at a time.
