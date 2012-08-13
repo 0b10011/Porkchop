@@ -9,7 +9,7 @@
  * @param mixed $subject The string or array being searched and replaced on,
  * otherwise known as the haystack. If subject is an array, then the search and
  * replace is performed with every entry of subject, and the return value is an
- * array as well. 
+ * array as well.
  * @param string $count If passed, this will be set to the number of
  * replacements performed.
  * @param int $limit The maximum possible replacements for each pattern in each
@@ -28,7 +28,7 @@ function str_replace_limit(
 	$count = 0;
 	
 	// Invalid $limit provided. Throw a warning.
-	if(!valid_integer($limit)){
+	if (!valid_integer($limit)) {
 		$backtrace = debug_backtrace();
 		trigger_error('Invalid $limit `'.$limit.'` provided to '.__function__.'() '.
 				'in `'.$backtrace[0]['file'].'` on line '.$backtrace[0]['line'].'. '.
@@ -37,7 +37,7 @@ function str_replace_limit(
 	}
 	
 	// Invalid $limit provided. Throw a warning.
-	if($limit<-1){
+	if ($limit<-1) {
 		$backtrace = debug_backtrace();
 		trigger_error('Invalid $limit `'.$limit.'` provided to '.__function__.'() '.
 				'in `'.$backtrace[0]['file'].'` on line '.$backtrace[0]['line'].'. '.
@@ -48,9 +48,9 @@ function str_replace_limit(
 	// No replacements necessary. Throw a notice as this was most likely not the
 	// intended use. And, if it was (e.g. part of a loop, setting $limit
 	// dynamically), it can be worked around by simply checking to see if
-	// $limit===0, and if it does, skip the function call (and set $count to 0,
+	// $limit === 0, and if it does, skip the function call (and set $count to 0,
 	// if applicable).
-	if($limit===0){
+	if ($limit === 0) {
 		$backtrace = debug_backtrace();
 		trigger_error('Invalid $limit `'.$limit.'` provided to '.__function__.'() '.
 				'in `'.$backtrace[0]['file'].'` on line '.$backtrace[0]['line'].'. '.
@@ -59,17 +59,17 @@ function str_replace_limit(
 	}
 	
 	// Use str_replace() whenever possible (for performance reasons)
-	if($limit===-1){
+	if ($limit === -1) {
 		return str_replace($search, $replace, $subject, $count);
 	}
 	
-	if(is_array($subject)){
+	if (is_array($subject)) {
 		
 		// Loop through $subject values and call this function for each one.
-		foreach($subject as $key => $this_subject){
+		foreach ($subject as $key => $this_subject) {
 			
 			// Skip values that are arrays (to match str_replace()).
-			if(!is_array($this_subject)){
+			if (!is_array($this_subject)) {
 				
 				// Call this function again for
 				$this_function = __FUNCTION__;
@@ -85,12 +85,12 @@ function str_replace_limit(
 				$count += $this_count;
 				
 				// Adjust $limit, if not -1
-				if($limit!=-1){
+				if ($limit != -1) {
 					$limit -= $this_count;
 				}
 				
 				// Reached $limit, return $subject
-				if($limit===0){
+				if ($limit === 0) {
 					return $subject;
 				}
 				
@@ -100,7 +100,7 @@ function str_replace_limit(
 		
 		return $subject;
 		
-	} elseif(is_array($search)){
+	} elseif (is_array($search)) {
 		// Only treat $replace as an array if $search is also an array (to match
 		// str_replace())
 		
@@ -108,12 +108,12 @@ function str_replace_limit(
 		$search = array_values($search);
 		
 		// Clear keys of $replace, if applicable (to match str_replace()).
-		if(is_array($replace)){
+		if (is_array($replace)) {
 			$replace = array_values($replace);
 		}
 		
 		// Loop through $search array.
-		foreach($search as $key => $this_search){
+		foreach ($search as $key => $this_search) {
 			
 			// Don't support multi-dimensional arrays (to match str_replace()).
 			$this_search = strval($this_search);
@@ -121,8 +121,8 @@ function str_replace_limit(
 			// If $replace is an array, use the value of $replace[$key] as the
 			// replacement. If $replace[$key] doesn't exist, just an empty string (to
 			// match str_replace()).
-			if(is_array($replace)){
-				if(array_key_exists($key, $replace)){
+			if (is_array($replace)) {
+				if (array_key_exists($key, $replace)) {
 					$this_replace = strval($replace[$key]);
 				} else {
 					$this_replace = '';
@@ -145,12 +145,12 @@ function str_replace_limit(
 			$count += $this_count;
 
 			// Adjust $limit, if not -1
-			if($limit!=-1){
+			if ($limit != -1) {
 				$limit -= $this_count;
 			}
 
 			// Reached $limit, return $subject
-			if($limit===0){
+			if ($limit === 0) {
 				return $subject;
 			}
 			
@@ -166,7 +166,7 @@ function str_replace_limit(
 		$pos = strpos($subject, $search);
 
 		// Return $subject if $search cannot be found
-		if($pos===false){
+		if ($pos === false) {
 			return $subject;
 		}
 
@@ -174,9 +174,9 @@ function str_replace_limit(
 		$search_len = strlen($search);
 
 		// Loop until $search can no longer be found, or $limit is reached
-		for($i=0;(($i<$limit)||($limit===-1));$i++){
+		for($i = 0; (($i<$limit) || ($limit === -1)); $i++) {
 
-			// Replace 
+			// Replace
 			$subject = substr_replace($subject, $replace, $pos, $search_len);
 
 			// Increase $count
@@ -186,7 +186,7 @@ function str_replace_limit(
 			$pos = strpos($subject, $search);
 
 			// Break out of loop if $needle
-			if($pos===false){
+			if ($pos === false) {
 				break;
 			}
 
