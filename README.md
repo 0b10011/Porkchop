@@ -1,5 +1,9 @@
 Extending PHP functions in PHP, one function at a time.
 
+## License
+
+The license can be found in the `LICENSE` file.
+
 ## Guidelines for inclusion
 
 1. Function **must** extend the functionality of an *existing internal function*.
