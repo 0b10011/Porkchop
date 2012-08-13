@@ -7,6 +7,8 @@ Extending PHP functions in PHP, one function at a time.
 3. Function **must** be documented with PHPDocumentor's [DocBlocks](http://www.phpdoc.org/docs/latest/for-users/anatomy-of-a-docblock.html).  
   **Required tags:** Description, `@param` for all parameters, and `@return`
 
+**Note:** If a function does not meet these requirements, but would be a good addition to the library, it will be moved to it's own development branch until these requirements *are* met.
+
 ## Function organization
 
 Functions should be located in a file with the name corresponding to the name of the group of functions that the function belongs to. The name should be lowercased and have any characters not fitting into `[a-z0-9]` replaced with a `hyphen-minus` character (U+002D). The end result should match `^([a-z0-9]+-)*([a-z0-9]+)\.php$`.
