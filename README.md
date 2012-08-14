@@ -15,7 +15,7 @@ The license can be found in the `LICENSE` file.
 
 ## Function organization
 
-Functions should be located in a file with the name corresponding to the name of the group of functions that the function belongs to. The name should be lowercased and have any characters not fitting into `[a-z0-9]` replaced with a `hyphen-minus` character (U+002D). The end result should match `^([a-z0-9]+-)*([a-z0-9]+)\.php$`.
+Functions should be ordered alphabetically in a file with the name corresponding to the name of the group of functions that the function belongs to. The name should be lowercased and have any characters not fitting into `[a-z0-9]` replaced with a `hyphen-minus` character (U+002D). The end result should match `^([a-z0-9]+-)*([a-z0-9]+)\.php$`.
 
 For example, [`imagecopyresampled()`](http://php.net/manual/en/function.imagecopyresampled.php) is in the "GD and Image Functions" group. If a replacement function was created, it would be placed in the `gd-and-image-functions.php` file in the root directory. An additional example is [`str_replace()`](http://php.net/manual/en/function.str-replace.php) which is in the "String Functions" group. A replacement function for it would then be placed in the `string-functions.php` file in the root directory.
 
